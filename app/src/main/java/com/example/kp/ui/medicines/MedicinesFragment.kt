@@ -56,7 +56,10 @@ class MedicinesFragment: Fragment(), MedicineRecyclerViewObserver{
         medicinesRecyclerview = binding.medicinesRecyclerview
         btnSearch.setOnClickListener {
             try {
+                medicinesRecyclerview.adapter = null
+                medicinesRecyclerview.adapter?.notifyDataSetChanged()
                 searchDrugs()
+
             } catch (e: Exception) {btnSearch.text = e.toString()}
             //searchDrugs()
         }
